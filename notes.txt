@@ -1,0 +1,45 @@
+If someone is going to use the OpenWeatherMap API, you will code the fetch url as this
+   const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&appid=${this.apiKey}`);
+and display the weather API data as this
+
+results(weather){
+    this.location.textContent = weather.name +', '+ weather.sys.country;
+    this.desc.textContent = weather.weather[0].description;
+    this.temp.textContent = weather.main.temp;
+    this.icon.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
+    this.humidity.textContent = `Relative Humidity: ${weather.main.humidity}`;
+    this.clouds.textContent = `Clouds: ${weather.clouds.all}`;
+    this.tempMax.textContent = `Tempature Max: ${weather.main.temp_max}`;
+    this.wind.textContent = `Wind Speed: ${weather.wind.speed}`;
+  }
+
+
+// URL:
+
+  http://api.openweathermap.org/data/2.5/weather?id=3369157&APPID=f31aadfc3719c5d36747bd7458b18cb4&units=metric
+
+
+  api.openweathermap.org/data/2.5/weather?id={city id}&appid={your api key}
+
+
+  http://api.openweathermap.org/data/2.5/weather?id=3369157&APPID=f31aadfc3719c5d36747bd7458b18cb4&units=[object%20HTMLInputElement]
+
+  "id": 160263,
+    "name": "Dar es Salaam",
+    "country": "TZ",
+    "coord": {
+      "lon": 39.269508,
+      "lat": -6.82349
+    }
+
+
+    add data dismiss to close without j-query
+
+    next step: add list using json
+    redo with entering city number and units
+
+    issues:
+    1. undefined units first, can't assign units first var outstide of local storage
+    2. rounding issues
+    3. can't refer to source.json without var obj in json file which is causing error
+    4. Close model not neccessary 

@@ -1,0 +1,40 @@
+Second property in constructor returning [object%20HTMLInputElement] instead of 'metric' value passed in
+
+_____________________________________________
+
+I'm using openweathermap.org and for this lesson as my weather data provider and I'm having an issue getting the desired HTML string to return. 
+
+I've dynamically inserted the city number, API key, and units (set to 'metric' in const response as below). The issue I'm running into is const response returns the URL without 'metric' appended. Both city and units are setup as text inputs in the HTML. 
+
+The strange thing is the city parameter is seemingly setup in exactly the same way as units, but only units does not return correctly, the city number does return correctly as part of the URL. I know this is as I changed returnResponseData to return response (to test the where the problem is) and this returns a key value for url of: [object%20HTMLInputElement] instead of 'metric'. 
+
+Any help in resolving this would be much appreciated! 
+
+The relevant code below:
+
+In the async getWeather function in weather.js I have set const response to: 
+
+await fetch(`http://api.openweathermap.org/data/2.5/weather?id=${this.city}&APPID=${this.apiKey}&units=${units}`)                                                            
+
+and in app.js i have initialized:
+
+const weather = new Weather('3369157', 'metric');
+
+my API key is hard coded in this.apiKey in and this.city = city; this.units = units 
+
+class Weather {
+    constructor(city, units){
+
+HTML:
+
+ <form id="w-form">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="units">Units</label>
+                <input type="text" id="units" class="form-control">
+            </div>
+
+          </form>
